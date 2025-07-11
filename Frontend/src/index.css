@@ -1,0 +1,230 @@
+/* General resets and fonts */
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f5f8fa;
+  margin: 0;
+  padding: 20px;
+  color: #14171a;
+}
+
+.app-container {
+  max-width: 600px;
+  margin: 0 auto;
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 16px;
+  box-shadow: 0 2px 5px rgb(0 0 0 / 0.1);
+}
+
+h1 {
+  text-align: center;
+  color: #1da1f2;
+  margin-bottom: 20px;
+}
+
+/* TweetCard styles */
+.tweet-card {
+  border-bottom: 1px solid #e1e8ed;
+  padding: 12px 0;
+}
+
+.tweet-card p {
+  margin: 4px 0;
+}
+
+.tweet-card p strong {
+  color: #1da1f2;
+  font-weight: 600;
+}
+
+.tweet-card small {
+  color: #657786;
+  font-size: 0.85rem;
+}
+
+/* Buttons */
+button {
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  padding: 6px 10px;
+  margin-right: 8px;
+  font-size: 1.1rem;
+  transition: color 0.2s ease;
+}
+
+button:hover {
+  color: #1da1f2;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.tweet-card button {
+  color: #657786;
+}
+
+.tweet-card button:hover {
+  color: #e0245e;
+}
+
+/* Like button styles */
+.tweet-card button:first-of-type {
+  font-size: 1.25rem;
+}
+
+/* CreateTweet styles */
+form {
+  margin-bottom: 20px;
+}
+
+textarea {
+  width: 100%;
+  resize: vertical;
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ccd6dd;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-family: inherit;
+  color: #14171a;
+  min-height: 70px;
+  transition: border-color 0.2s ease;
+}
+
+textarea:focus {
+  outline: none;
+  border-color: #1da1f2;
+}
+
+form button[type="submit"] {
+  background-color: #1da1f2;
+  color: white;
+  font-weight: 600;
+  border-radius: 20px;
+  padding: 8px 16px;
+  margin-top: 8px;
+  display: inline-block;
+}
+
+form button[type="submit"]:disabled {
+  background-color: #aab8c2;
+  cursor: not-allowed;
+}
+
+/* Search input */
+input[type="text"] {
+  width: 100%;
+  padding: 10px 12px;
+  margin-bottom: 12px;
+  border-radius: 20px;
+  border: 1px solid #ccd6dd;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+input[type="text"]:focus {
+  outline: none;
+  border-color: #1da1f2;
+}
+
+/* Sort select */
+select {
+  padding: 8px 12px;
+  font-size: 1rem;
+  border-radius: 20px;
+  border: 1px solid #ccd6dd;
+  margin-bottom: 20px;
+  cursor: pointer;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+select:focus {
+  outline: none;
+  border-color: #1da1f2;
+}
+
+/* Pagination buttons */
+div > button {
+  background-color: #1da1f2;
+  color: white;
+  border-radius: 20px;
+  padding: 8px 16px;
+  margin: 0 6px;
+  font-weight: 600;
+  border: none;
+}
+
+div > button:disabled {
+  background-color: #aab8c2;
+  cursor: not-allowed;
+}
+
+div > span {
+  font-weight: 600;
+  color: #657786;
+}
+
+/* Modal styles (EditTweet) */
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(20, 23, 26, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal {
+  background-color: white;
+  border-radius: 10px;
+  padding: 24px;
+  max-width: 480px;
+  width: 90%;
+  box-shadow: 0 10px 25px rgb(0 0 0 / 0.2);
+}
+
+.modal textarea {
+  min-height: 120px;
+  font-size: 1.1rem;
+}
+
+.modal div {
+  margin-top: 12px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.modal button {
+  background-color: #1da1f2;
+  color: white;
+  border-radius: 20px;
+  padding: 8px 16px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+}
+
+.modal button[type="button"] {
+  background-color: #657786;
+}
+
+.modal button:disabled {
+  background-color: #aab8c2;
+  cursor: not-allowed;
+}
+
+/* Responsive tweaks */
+@media (max-width: 640px) {
+  .app-container {
+    padding: 12px;
+  }
+}
