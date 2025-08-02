@@ -6,26 +6,34 @@ import SearchTweets from "../SearchTweets/SearchTweets";
 import TweetCard from "../TweetCard/TweetCard.jsx";
 import styles from "./TweetListStyles.js";
 
-import { jwtDecode } from "jwt-decode";
-
-const TweetList = ({ token }) => {
+const TweetList = ({
+  token,
+  setUsers,
+  users,
+  currentUserId,
+  followingList,
+  setFollowingList,
+}) => {
   const [tweets, setTweets] = useState([]);
-  const [users, setUsers] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [sortBy, setSortBy] = useState("newest");
   const [sortedTweets, setSortedTweets] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
 
-  const decoded = token ? jwtDecode(token) : null;
-  const currentUserId = decoded?.id;
-
   const tweetsPerPage = 5;
 
   const indexOfLastTweet = currentPage * tweetsPerPage;
   const indexOfFirstTweet = indexOfLastTweet - tweetsPerPage;
-  const currentTweets = sortedTweets.slice(indexOfFirstTweet, indexOfLastTweet);
+  const visibleTweets = sortedTweets.filter(
+    (tweet) =>
+      followingList.includes(tweet.user._id) || tweet.user._id === currentUserId
+  );
+  const currentTweets = visibleTweets.slice(
+    indexOfFirstTweet,
+    indexOfLastTweet
+  );
 
-  const totalPages = Math.ceil(tweets.length / tweetsPerPage);
+  const totalPages = Math.ceil(visibleTweets.length / tweetsPerPage);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -101,6 +109,7 @@ const TweetList = ({ token }) => {
         />
         <h3>Welcome, {getUsernameById(currentUserId, users)}!</h3>
       </div>
+
       <CreateTweet
         setTweets={setTweets}
         getUsernameById={(id, users) => getUsernameById(id, users)}
@@ -111,6 +120,7 @@ const TweetList = ({ token }) => {
 
       <div style={styles.div}>
         <SearchTweets searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+
         <SortTweets
           tweets={filteredTweets}
           sortBy={sortBy}
@@ -118,7 +128,6 @@ const TweetList = ({ token }) => {
           onSort={handleSort}
         />
       </div>
-
       {currentTweets.map((tweet) => (
         <TweetCard
           key={tweet._id}
@@ -128,9 +137,10 @@ const TweetList = ({ token }) => {
           onDelete={handleTweetDelete}
           onUpdate={handleTweetUpdate}
           users={users}
-          getUsernameById={(id, users) => getUsernameById(id, users)}
+          getUsernameById={getUsernameById}
         />
       ))}
+
       <div style={styles.pagination}>
         <button
           onClick={goToPreviousPage}

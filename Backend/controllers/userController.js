@@ -58,4 +58,38 @@ const login = async (req, res) => {
   }
 };
 
-module.exports = { getUsers, register, login };
+const followUsers = async (req, res) => {
+  const { _id: currentUserId, following: newFollowingList } = req.body;
+
+  try {
+    if (!currentUserId || !Array.isArray(newFollowingList)) {
+      return res
+        .status(400)
+        .json({ message: "User ID and following list are required." });
+    }
+
+    const filteredFollowing = newFollowingList.filter(
+      (id) => typeof id === "string" && id !== currentUserId
+    );
+
+    const updatedUser = await User.findByIdAndUpdate(
+      currentUserId,
+      { following: filteredFollowing },
+      { new: true }
+    );
+
+    if (!updatedUser) {
+      return res.status(404).json({ message: "User not found." });
+    }
+
+    res.status(200).json({
+      message: "Following list successfully updated.",
+      following: updatedUser.following,
+    });
+  } catch (error) {
+    console.error("Error updating following list:", error);
+    res.status(500).json({ message: "Internal server error", error });
+  }
+};
+
+module.exports = { getUsers, register, login, followUsers };

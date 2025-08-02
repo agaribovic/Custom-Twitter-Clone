@@ -5,6 +5,7 @@ const styles = {
     paddingLeft: 16,
     paddingRight: 16,
     paddingBottom: 20,
+    width: "500px",
   },
 
   div: {

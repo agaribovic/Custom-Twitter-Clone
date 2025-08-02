@@ -2,11 +2,18 @@ import { useState } from "react";
 import TweetList from "./components/TweetList/TweetList";
 import Login from "./components/Login/Login";
 import Registration from "./components/Registration/Registration";
+import Followers from "./components/Followers/Followers";
 import styles from "./AppStyles";
+import { jwtDecode } from "jwt-decode";
 
 function App() {
   const [token, setToken] = useState(localStorage.getItem("token") || "");
   const [showRegister, setShowRegister] = useState(false);
+  const [users, setUsers] = useState([]);
+  const [followingList, setFollowingList] = useState([]);
+
+  const decoded = token ? jwtDecode(token) : null;
+  const currentUserId = decoded?.id;
 
   const handleLogin = (token) => {
     setToken(token);
@@ -23,7 +30,6 @@ function App() {
       handleLogin(userData.token);
     } else {
       setShowRegister(false);
-      alert("Registration successful! Please log in.");
     }
   };
 
@@ -40,7 +46,32 @@ function App() {
             Logout
           </button>
 
-          <TweetList token={token} />
+          <div style={{ display: "flex", alignItems: "flex-start" }}>
+            <TweetList
+              token={token}
+              setUsers={setUsers}
+              users={users}
+              currentUserId={currentUserId}
+              followingList={followingList}
+              setFollowingList={setFollowingList}
+              style={{ flex: 1 }}
+            />
+            <div style={{ width: "300px" }}>
+              <Followers
+                users={users}
+                setUsers={setUsers}
+                currentUserId={currentUserId}
+                setFollowingList={setFollowingList}
+                followingList={followingList}
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                  marginBottom: "1rem",
+                }}
+              />
+            </div>
+          </div>
         </>
       ) : (
         <>

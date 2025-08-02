@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { toggleLike } from "./utils/toggleLike";
-import { updateTweet } from "./utils/updateTweet";
-import { deleteTweet } from "./utils/handleDelete";
+import { toggleLike } from "../utils/toggleLike";
+import { updateTweet } from "../utils/updateTweet";
+import { deleteTweet } from "../utils/handleDelete";
 import EditTweet from "../EditTweet/EditTweet";
 import styles from "../TweetCard/TweetCardStyles";
 
