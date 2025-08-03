@@ -4,6 +4,7 @@ export const updateFollowers = async ({
   currentUserId,
   currentUser,
   setFollowingList,
+  token,
 }) => {
   try {
     const response = await axios.patch(
@@ -13,9 +14,7 @@ export const updateFollowers = async ({
         following: currentUser?.following || [],
       },
       {
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { Authorization: `Bearer ${token}` },
       }
     );
 

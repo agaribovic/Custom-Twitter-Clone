@@ -119,5 +119,5 @@ module.exports = {
   likeTweet,
   unlikeTweet,
   editTweet,
-  deleteTweet,
+  deleteTweet
 };

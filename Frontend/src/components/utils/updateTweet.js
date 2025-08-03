@@ -5,9 +5,7 @@ export const updateTweet = async ({ tweetId, content, token }) => {
     const res = await axios.patch(
       `http://localhost:5000/api/tweets/${tweetId}/edit`,
       { content },
-      {
-        headers: { Authorization: `Bearer ${token}` },
-      }
+      { headers: { Authorization: `Bearer ${token}` } }
     );
     return res.data;
   } catch (error) {

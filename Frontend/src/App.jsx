@@ -11,6 +11,7 @@ function App() {
   const [showRegister, setShowRegister] = useState(false);
   const [users, setUsers] = useState([]);
   const [followingList, setFollowingList] = useState([]);
+  const [tweets, setTweets] = useState([]);
 
   const decoded = token ? jwtDecode(token) : null;
   const currentUserId = decoded?.id;
@@ -54,6 +55,8 @@ function App() {
               currentUserId={currentUserId}
               followingList={followingList}
               setFollowingList={setFollowingList}
+              tweets={tweets}
+              setTweets={setTweets}
               style={{ flex: 1 }}
             />
             <div style={{ width: "300px" }}>
@@ -63,6 +66,9 @@ function App() {
                 currentUserId={currentUserId}
                 setFollowingList={setFollowingList}
                 followingList={followingList}
+                token={token}
+                setTweets={setTweets}
+                tweets={tweets}
                 style={{
                   display: "flex",
                   justifyContent: "space-between",

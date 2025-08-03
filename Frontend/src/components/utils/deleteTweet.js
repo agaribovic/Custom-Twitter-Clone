@@ -2,16 +2,6 @@ import axios from "axios";
 import Swal from "sweetalert2";
 
 export const deleteTweet = async ({ tweetId, token, onDelete }) => {
-  if (!token) {
-    Swal.fire({
-      icon: "warning",
-      title: "Not logged in",
-      text: "You must be logged in to delete a tweet.",
-      confirmButtonColor: "#1DA1F2",
-    });
-    return;
-  }
-
   const result = await Swal.fire({
     title: "Are you sure?",
     text: "This tweet will be permanently deleted.",

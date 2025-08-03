@@ -12,9 +12,9 @@ const TweetList = ({
   users,
   currentUserId,
   followingList,
-  setFollowingList,
+  tweets,
+  setTweets,
 }) => {
-  const [tweets, setTweets] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [sortBy, setSortBy] = useState("newest");
   const [sortedTweets, setSortedTweets] = useState([]);
@@ -26,14 +26,18 @@ const TweetList = ({
   const indexOfFirstTweet = indexOfLastTweet - tweetsPerPage;
   const visibleTweets = sortedTweets.filter(
     (tweet) =>
-      followingList.includes(tweet.user._id) || tweet.user._id === currentUserId
+      followingList.includes(tweet.user?._id) ||
+      tweet.user?._id === currentUserId
   );
   const currentTweets = visibleTweets.slice(
     indexOfFirstTweet,
     indexOfLastTweet
   );
 
-  const totalPages = Math.ceil(visibleTweets.length / tweetsPerPage);
+  const totalPages = Math.max(
+    1,
+    Math.ceil(visibleTweets.length / tweetsPerPage)
+  );
 
   useEffect(() => {
     const fetchData = async () => {
@@ -55,7 +59,7 @@ const TweetList = ({
     };
 
     fetchData();
-  }, []);
+  }, [setUsers, setTweets]);
 
   const getUsernameById = (id, usersArray) => {
     const user = usersArray.find((u) => u._id === id);
@@ -93,7 +97,7 @@ const TweetList = ({
   const handleTweetUpdate = (updatedTweet) => {
     setTweets((prevTweets) =>
       prevTweets.map((tweet) =>
-        tweet._id === updatedTweet._id ? updatedTweet : tweet
+        tweet?._id === updatedTweet._id ? updatedTweet : tweet
       )
     );
   };

@@ -1,4 +1,5 @@
 const User = require("../models/User");
+const Tweet = require("../models/Tweet");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
@@ -92,4 +93,39 @@ const followUsers = async (req, res) => {
   }
 };
 
-module.exports = { getUsers, register, login, followUsers };
+const deleteUser = async (req, res) => {
+  try {
+    const deletedUser = await User.findByIdAndDelete(req.params.id);
+
+    if (!deletedUser) {
+      return res.status(404).json({ msg: "User not found" });
+    }
+
+    res.status(200).json({ msg: "User deleted successfully" });
+  } catch (err) {
+    console.error("Delete user error:", err);
+    res.status(500).json({ error: "Server error while deleting user" });
+  }
+};
+
+const deleteTweetsByUser = async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    const result = await Tweet.deleteMany({ user: id });
+    res
+      .status(200)
+      .json({ message: "Tweets deleted", deletedCount: result.deletedCount });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
+module.exports = {
+  getUsers,
+  register,
+  login,
+  followUsers,
+  deleteUser,
+  deleteTweetsByUser,
+};
