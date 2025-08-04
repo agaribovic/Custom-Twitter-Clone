@@ -1,8 +1,10 @@
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import { updateFollowers } from "../utils/updateFollowers";
 import { deleteUser } from "../utils/deleteUser";
 import { deleteTweetsByUser } from "../utils/deleteUser";
 import styles from "./FollowersStyles.jsx";
+import shuffle from "lodash/shuffle";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function Followers({
   users,
@@ -13,10 +15,8 @@ export default function Followers({
   setTweets,
   tweets,
 }) {
+  const [hovered, setHovered] = useState(false);
   const currentUser = users.find((user) => user._id === currentUserId);
-
-  console.log("tweetovi", tweets);
-  console.log("useri", users);
 
   useEffect(() => {
     if (currentUser && currentUser.following)
@@ -71,47 +71,69 @@ export default function Followers({
     });
   };
 
+  const handleShuffle = () => {
+    setUsers((prev) => shuffle(prev));
+  };
+
   return (
     <div style={styles.sidebar}>
       <h2
-        style={{ marginBottom: "20px", fontSize: "18px", textAlign: "center" }}
+        style={{
+          marginBottom: "20px",
+          fontSize: "18px",
+          textAlign: "center",
+          color: hovered ? "rgb(29, 161, 242)" : "black",
+        }}
+        onClick={handleShuffle}
+        onMouseEnter={() => setHovered(true)}
+        onMouseLeave={() => setHovered(false)}
       >
         Suggested Users
       </h2>
-      {users.map((user) => {
-        const isFollowing = currentUser?.following.includes(user._id);
-        const isDisabled = currentUserId === user._id;
+      <AnimatePresence>
+        {users.map((user) => {
+          const isFollowing = currentUser?.following.includes(user._id);
+          const isDisabled = currentUserId === user._id;
 
-        const buttonStyle = {
-          ...(isFollowing ? styles.unfollowButton : styles.followButton),
-          ...(isDisabled ? styles.disabledButton : {}),
-          width: 80,
-        };
+          const buttonStyle = {
+            ...(isFollowing ? styles.unfollowButton : styles.followButton),
+            ...(isDisabled ? styles.disabledButton : {}),
+            width: 80,
+          };
 
-        return (
-          <div key={user._id} style={styles.userCard}>
-            <span
-              onClick={() => handleDelete(user._id)}
-              style={{
-                pointerEvents: isDisabled ? "none" : "auto",
-                opacity: isDisabled ? 0.5 : 1,
-                cursor: isDisabled ? "not-allowed" : "pointer",
-              }}
+          return (
+            <motion.li
+              key={user._id}
+              style={styles.userCard}
+              layout
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.8, opacity: 0 }}
+              transition={{ type: "spring", stiffness: 25 }}
             >
-              X
-            </span>
-            <span style={styles.username}>{user.username}</span>
+              <span
+                onClick={() => handleDelete(user._id)}
+                style={{
+                  pointerEvents: isDisabled ? "none" : "auto",
+                  opacity: isDisabled ? 0.5 : 1,
+                  cursor: isDisabled ? "not-allowed" : "pointer",
+                }}
+              >
+                X
+              </span>
+              <span style={styles.username}>{user.username}</span>
 
-            <button
-              onClick={() => handleFollow(user._id)}
-              disabled={isDisabled}
-              style={buttonStyle}
-            >
-              {isFollowing ? "Unfollow" : "Follow"}
-            </button>
-          </div>
-        );
-      })}
+              <button
+                onClick={() => handleFollow(user._id)}
+                disabled={isDisabled}
+                style={buttonStyle}
+              >
+                {isFollowing ? "Unfollow" : "Follow"}
+              </button>
+            </motion.li>
+          );
+        })}
+      </AnimatePresence>
     </div>
   );
 }
