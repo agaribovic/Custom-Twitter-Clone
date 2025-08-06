@@ -3,6 +3,7 @@ import TweetList from "./components/TweetList/TweetList";
 import Login from "./components/Login/Login";
 import Registration from "./components/Registration/Registration";
 import Followers from "./components/Followers/Followers";
+import ChatMessages from "./components/ChatMessages/ChatMessages";
 import styles from "./AppStyles";
 import { jwtDecode } from "jwt-decode";
 
@@ -47,7 +48,10 @@ function App() {
             Logout
           </button>
 
+         
+
           <div style={{ display: "flex", alignItems: "flex-start" }}>
+             
             <TweetList
               token={token}
               setUsers={setUsers}
@@ -59,7 +63,9 @@ function App() {
               setTweets={setTweets}
               style={{ flex: 1 }}
             />
-            <div style={{ width: "300px" }}>
+
+            <ChatMessages token={token}/>
+            
               <Followers
                 users={users}
                 setUsers={setUsers}
@@ -76,7 +82,7 @@ function App() {
                   marginBottom: "1rem",
                 }}
               />
-            </div>
+         
           </div>
         </>
       ) : (

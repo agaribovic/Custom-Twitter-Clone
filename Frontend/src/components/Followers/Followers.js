@@ -12,8 +12,7 @@ export default function Followers({
   currentUserId,
   setFollowingList,
   token,
-  setTweets,
-  tweets,
+  setTweets
 }) {
   const [hovered, setHovered] = useState(false);
   const currentUser = users.find((user) => user._id === currentUserId);
@@ -94,6 +93,7 @@ export default function Followers({
         {users.map((user) => {
           const isFollowing = currentUser?.following.includes(user._id);
           const isDisabled = currentUserId === user._id;
+          const isAdmin = currentUser?.username === 'Admin';
 
           const buttonStyle = {
             ...(isFollowing ? styles.unfollowButton : styles.followButton),
@@ -111,16 +111,17 @@ export default function Followers({
               exit={{ scale: 0.8, opacity: 0 }}
               transition={{ type: "spring", stiffness: 25 }}
             >
+              {
               <span
                 onClick={() => handleDelete(user._id)}
                 style={{
-                  pointerEvents: isDisabled ? "none" : "auto",
-                  opacity: isDisabled ? 0.5 : 1,
-                  cursor: isDisabled ? "not-allowed" : "pointer",
+                  pointerEvents: !isAdmin || isDisabled ? "none" : "auto",
+                  opacity: !isAdmin || isDisabled ? 0.5 : 1,
+                  cursor: !isAdmin || isDisabled ? "not-allowed" : "pointer",
                 }}
               >
                 X
-              </span>
+              </span>}
               <span style={styles.username}>{user.username}</span>
 
               <button

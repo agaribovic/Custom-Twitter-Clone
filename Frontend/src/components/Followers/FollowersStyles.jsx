@@ -1,8 +1,5 @@
 const styles = {
   sidebar: {
-    position: "fixed",
-    top: "60px",
-    right: 0,
     width: "280px",
     height: "calc(100vh - 60px)",
     overflowY: "auto",
@@ -10,7 +7,6 @@ const styles = {
     boxShadow: "-2px 0 8px rgba(0,0,0,0.1)",
     padding: "16px",
     borderRadius: "8px 0 0 8px",
-    zIndex: 1000,
   },
 
   userCard: {
