@@ -105,7 +105,7 @@ const TweetList = ({
   };
 
   return (
-    <div style={styles.container}>
+    <main style={styles.container}>
       <div style={{ display: "flex", alignItems: "center" }}>
         <img
           src="https://abs.twimg.com/icons/apple-touch-icon-192x192.png"
@@ -174,7 +174,7 @@ const TweetList = ({
           Next
         </button>
       </div>
-    </div>
+    </main>
   );
 };
 

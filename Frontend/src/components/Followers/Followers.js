@@ -76,7 +76,7 @@ export default function Followers({
   };
 
   return (
-    <div style={styles.sidebar}>
+    <aside style={styles.sidebar}>
       <h2
         style={{
           marginBottom: "20px",
@@ -144,6 +144,6 @@ export default function Followers({
           );
         })}
       </AnimatePresence>
-    </div>
+    </aside>
   );
 }

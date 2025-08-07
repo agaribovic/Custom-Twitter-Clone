@@ -2,7 +2,7 @@ import styles from "./ThemeToggleStyles";
 
 const ThemeToggle = ({ toggleTheme, theme }) => {
   return (
-    <div style={styles.bulbWrapper} onClick={toggleTheme}>
+    <div id="bulb" style={styles.bulbWrapper} onClick={toggleTheme}>
       <div
         style={{
           ...styles.bulb,

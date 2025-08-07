@@ -6,6 +6,7 @@ import Followers from "./components/Followers/Followers";
 import ChatMessages from "./components/ChatMessages/ChatMessages";
 import ThemeToggle from "./components/ThemeToggle/ThemeToggle";
 import Footer from "./components/Footer/Footer";
+import BackgroundMusic from "./components/BackgroundMusic/BackgroundMusic";
 import { jwtDecode } from "jwt-decode";
 
 function App() {
@@ -57,10 +58,10 @@ function App() {
   };
 
   return (
-    <div>
+    <>
       {token ? (
         <>
-          <div style={{ display: "flex", justifyContent: "space-between" }}>
+          <header style={{ display: "flex", justifyContent: "space-between" }}>
             <button
               onClick={handleLogout}
               onMouseOver={(e) => (e.target.style.backgroundColor = "#1A91DA")}
@@ -70,12 +71,11 @@ function App() {
               Logout
             </button>
 
-            <h1 style={{ marginLeft: "125px" }}>𝙲𝚄𝚂𝚃𝙾𝙼 𝚃𝚆𝙸𝚃𝚃𝙴𝚁 𝙲𝙻𝙾𝙽𝙴 𝙰𝙿𝙿</h1>
-
+            <BackgroundMusic />
             <ThemeToggle toggleTheme={toggleTheme} theme={theme} />
-          </div>
+          </header>
 
-          <div
+          <div id="container"
             style={{
               display: "flex",
               marginTop: "50px",
@@ -150,7 +150,7 @@ function App() {
           )}
         </>
       )}
-    </div>
+    </>
   );
 }
 

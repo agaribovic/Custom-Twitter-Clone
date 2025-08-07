@@ -6,7 +6,7 @@
   --color-secondary: #657786;
   --color-border: #ccd6dd;
   --color-light-bg: #f5f8fa;
-  --color-dark-bg: #111111;
+  --color-dark-bg: #1f1f3d;
   --color-dark-text: #ffffff;
   --color-light-text: #14171a;
   --color-error: #e0245e;
@@ -22,7 +22,7 @@ body {
   font-family: var(--font-main);
   background-color: var(--color-light-bg);
   color: var(--color-light-text);
-  transition: background 0.3s, color 0.3s;
+  transition: background-color 0.3s, color 0.3s;
 }
 
 /* ======================
@@ -290,3 +290,5 @@ div > span {
   justify-content: flex-end;
   gap: 10px;
 }
+
+

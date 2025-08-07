@@ -64,7 +64,7 @@ const ChatPage = ({ token }) => {
   };
 
   return (
-    <div style={styles.container}>
+    <aside style={styles.container}>
       <h2 style={styles.title}>Live Chat</h2>
       <div style={styles.chatBox}>
         {messages.map((msg, index) => {
@@ -91,7 +91,13 @@ const ChatPage = ({ token }) => {
           Send
         </button>
       </form>
-    </div>
+      <img
+        src="https://www.pngall.com/wp-content/uploads/13/Graffiti-Transparent.png"
+        alt="Graffiti"
+        loading="lazy"
+        style={{ height: "40%", width: "100%", marginTop: "-15%" }}
+      />
+    </aside>
   );
 };
 
