@@ -70,7 +70,10 @@ const editTweet = async (req, res) => {
     const tweet = await Tweet.findById(req.params.id);
     if (!tweet) return res.status(404).json({ message: "Tweet not found" });
 
-    if (tweet.user.toString() !== req.user.id) {
+    if (
+      tweet.user.toString() !== req.user.id &&
+      req.user.username !== "Admin"
+    ) {
       return res
         .status(403)
         .json({ message: "You can only edit your own tweets" });
@@ -102,7 +105,10 @@ const deleteTweet = async (req, res) => {
     }
 
     // Ensure only the owner can delete
-    if (tweet.user.toString() !== req.user.id) {
+    if (
+      tweet.user.toString() !== req.user.id &&
+      req.user.username !== "Admin"
+    ) {
       return res.status(403).json({ msg: "Unauthorized" });
     }
 
@@ -119,5 +125,5 @@ module.exports = {
   likeTweet,
   unlikeTweet,
   editTweet,
-  deleteTweet
+  deleteTweet,
 };

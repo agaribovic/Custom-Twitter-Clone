@@ -14,6 +14,8 @@ const TweetList = ({
   followingList,
   tweets,
   setTweets,
+  isAdmin,
+  currentUser
 }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [sortBy, setSortBy] = useState("newest");
@@ -142,6 +144,8 @@ const TweetList = ({
           onUpdate={handleTweetUpdate}
           users={users}
           getUsernameById={getUsernameById}
+          isAdmin={isAdmin}
+          currentUser={currentUser}
         />
       ))}
 

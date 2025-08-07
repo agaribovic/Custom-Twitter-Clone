@@ -12,11 +12,12 @@ export default function Followers({
   currentUserId,
   setFollowingList,
   token,
-  setTweets
+  setTweets,
+  isAdmin,
+  currentUser
 }) {
   const [hovered, setHovered] = useState(false);
-  const currentUser = users.find((user) => user._id === currentUserId);
-
+  
   useEffect(() => {
     if (currentUser && currentUser.following)
       setFollowingList(currentUser.following);
@@ -90,10 +91,9 @@ export default function Followers({
         Suggested Users
       </h2>
       <AnimatePresence>
-        {users.map((user) => {
+        {users.map((user, index) => {
           const isFollowing = currentUser?.following.includes(user._id);
           const isDisabled = currentUserId === user._id;
-          const isAdmin = currentUser?.username === 'Admin';
 
           const buttonStyle = {
             ...(isFollowing ? styles.unfollowButton : styles.followButton),
@@ -112,17 +112,26 @@ export default function Followers({
               transition={{ type: "spring", stiffness: 25 }}
             >
               {
+                <span
+                  onClick={() => handleDelete(user._id)}
+                  style={{
+                    pointerEvents: !isAdmin || isDisabled ? "none" : "auto",
+                    opacity: !isAdmin || isDisabled ? 0.5 : 1,
+                    cursor: !isAdmin || isDisabled ? "not-allowed" : "pointer",
+                    color: "#d33",
+                  }}
+                >
+                  X
+                </span>
+              }
               <span
-                onClick={() => handleDelete(user._id)}
                 style={{
-                  pointerEvents: !isAdmin || isDisabled ? "none" : "auto",
-                  opacity: !isAdmin || isDisabled ? 0.5 : 1,
-                  cursor: !isAdmin || isDisabled ? "not-allowed" : "pointer",
+                  ...styles.username,
+                  color: user.username === "Admin" ? "blue" : "black",
                 }}
               >
-                X
-              </span>}
-              <span style={styles.username}>{user.username}</span>
+                {user.username}
+              </span>
 
               <button
                 onClick={() => handleFollow(user._id)}

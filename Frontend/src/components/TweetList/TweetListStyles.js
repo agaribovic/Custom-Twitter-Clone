@@ -1,11 +1,7 @@
 const styles = {
   container: {
-    maxWidth: 640,
-    margin: "24px auto 0 auto",
-    paddingLeft: 16,
-    paddingRight: 16,
-    paddingBottom: 20,
-    width: "500px",
+    maxWidth: 700,
+    width: "100%"
   },
 
   div: {

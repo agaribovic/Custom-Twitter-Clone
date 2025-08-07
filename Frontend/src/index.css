@@ -1,31 +1,100 @@
-/* General resets and fonts */
-body {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #f5f8fa;
-  margin: 0;
-  padding: 20px;
-  color: #14171a;
+/* ======================
+   Base & Reset Styles
+========================= */
+:root {
+  --color-primary: #1da1f2;
+  --color-secondary: #657786;
+  --color-border: #ccd6dd;
+  --color-light-bg: #f5f8fa;
+  --color-dark-bg: #111111;
+  --color-dark-text: #ffffff;
+  --color-light-text: #14171a;
+  --color-error: #e0245e;
+  --color-disabled: #aab8c2;
+
+  --btn-radius: 20px;
+  --font-main: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.app-container {
+body {
+  margin: 0;
+  padding: 2rem;
+  font-family: var(--font-main);
+  background-color: var(--color-light-bg);
+  color: var(--color-light-text);
+  transition: background 0.3s, color 0.3s;
+}
+
+/* ======================
+   App Layout
+========================= */
+.app-container,
+.app {
   max-width: 600px;
   margin: 0 auto;
+  text-align: center;
   background-color: #fff;
   border-radius: 8px;
   padding: 16px;
   box-shadow: 0 2px 5px rgb(0 0 0 / 0.1);
 }
 
+@media (max-width: 640px) {
+  .app-container {
+    padding: 12px;
+  }
+}
+
+/* ======================
+   Typography
+========================= */
 h1 {
-  text-align: center;
-  color: #1da1f2;
+  color: var(--color-primary);
   margin-bottom: 20px;
 }
 
-/* TweetCard styles */
+/* ======================
+   Theme Toggle
+========================= */
+.theme-toggle {
+  margin-top: 1rem;
+  padding: 10px 20px;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 5px;
+  float: right;
+  background-color: var(--btn-bg);
+  color: var(--btn-text);
+}
+
+/* Light Theme */
+body.light {
+  --bg: #ffffff;
+  --text: #111111;
+  --btn-bg: #f0f0f0;
+  --btn-text: #111;
+  background: var(--bg);
+  color: var(--text);
+}
+
+/* Dark Theme */
+body.dark {
+  --bg: var(--color-dark-bg);
+  --text: var(--color-dark-text);
+  --btn-bg: #333;
+  --btn-text: #fff;
+  background: var(--bg);
+  color: var(--color-primary);
+}
+
+/* ======================
+   Tweet Card
+========================= */
 .tweet-card {
   border-bottom: 1px solid #e1e8ed;
   padding: 12px 0;
+  text-align: left;
 }
 
 .tweet-card p {
@@ -33,16 +102,18 @@ h1 {
 }
 
 .tweet-card p strong {
-  color: #1da1f2;
+  color: var(--color-primary);
   font-weight: 600;
 }
 
 .tweet-card small {
-  color: #657786;
+  color: var(--color-secondary);
   font-size: 0.85rem;
 }
 
-/* Buttons */
+/* ======================
+   Buttons
+========================= */
 button {
   cursor: pointer;
   border: none;
@@ -54,7 +125,7 @@ button {
 }
 
 button:hover {
-  color: #1da1f2;
+  color: var(--color-primary);
 }
 
 button:disabled {
@@ -63,95 +134,88 @@ button:disabled {
 }
 
 .tweet-card button {
-  color: #657786;
+  color: var(--color-secondary);
 }
 
 .tweet-card button:hover {
-  color: #e0245e;
+  color: var(--color-error);
 }
 
-/* Like button styles */
 .tweet-card button:first-of-type {
   font-size: 1.25rem;
 }
 
-/* CreateTweet styles */
+/* Form Submit Button */
+form button[type="submit"],
+.modal button {
+  background-color: var(--color-primary);
+  color: white;
+  font-weight: 600;
+  border-radius: var(--btn-radius);
+  padding: 8px 16px;
+  border: none;
+  cursor: pointer;
+}
+
+form button[type="submit"]:disabled,
+.modal button:disabled {
+  background-color: var(--color-disabled);
+  cursor: not-allowed;
+}
+
+.modal button[type="button"] {
+  background-color: var(--color-secondary);
+}
+
+/* ======================
+   Forms: CreateTweet, Search, Sort
+========================= */
 form {
   margin-bottom: 20px;
 }
 
-textarea {
+textarea,
+input[type="text"],
+select {
   width: 100%;
-  resize: vertical;
-  padding: 10px;
+  padding: 10px 12px;
   font-size: 1rem;
-  border: 1px solid #ccd6dd;
-  border-radius: 4px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--btn-radius);
   box-sizing: border-box;
   font-family: inherit;
-  color: #14171a;
-  min-height: 70px;
+  color: var(--color-light-text);
   transition: border-color 0.2s ease;
 }
 
-textarea:focus {
-  outline: none;
-  border-color: #1da1f2;
+textarea {
+  min-height: 70px;
+  resize: vertical;
 }
 
-form button[type="submit"] {
-  background-color: #1da1f2;
-  color: white;
-  font-weight: 600;
-  border-radius: 20px;
-  padding: 8px 16px;
-  margin-top: 8px;
-  display: inline-block;
-}
-
-form button[type="submit"]:disabled {
-  background-color: #aab8c2;
-  cursor: not-allowed;
-}
-
-/* Search input */
-input[type="text"] {
-  width: 100%;
-  padding: 10px 12px;
-  margin-bottom: 12px;
-  border-radius: 20px;
-  border: 1px solid #ccd6dd;
-  font-size: 1rem;
-  box-sizing: border-box;
-}
-
-input[type="text"]:focus {
-  outline: none;
-  border-color: #1da1f2;
-}
-
-/* Sort select */
-select {
-  padding: 8px 12px;
-  font-size: 1rem;
-  border-radius: 20px;
-  border: 1px solid #ccd6dd;
-  margin-bottom: 20px;
-  cursor: pointer;
-  width: 100%;
-  box-sizing: border-box;
-}
-
+textarea:focus,
+input[type="text"]:focus,
 select:focus {
   outline: none;
-  border-color: #1da1f2;
+  border-color: var(--color-primary);
 }
 
-/* Pagination buttons */
+input[type="text"] {
+  margin-bottom: 12px;
+}
+
+select {
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+
+/* ======================
+   Pagination
+========================= */
 div > button {
-  background-color: #1da1f2;
+  background-color: var(--color-primary);
   color: white;
-  border-radius: 20px;
+  border-radius: var(--btn-radius);
   padding: 8px 16px;
   margin: 0 6px;
   font-weight: 600;
@@ -159,16 +223,17 @@ div > button {
 }
 
 div > button:disabled {
-  background-color: #aab8c2;
-  cursor: not-allowed;
+  background-color: var(--color-disabled);
 }
 
 div > span {
   font-weight: 600;
-  color: #657786;
+  color: var(--color-secondary);
 }
 
-/* Modal styles (EditTweet) */
+/* ======================
+   Modal (EditTweet)
+========================= */
 .modal-backdrop {
   position: fixed;
   top: 0;
@@ -189,6 +254,7 @@ div > span {
   max-width: 480px;
   width: 90%;
   box-shadow: 0 10px 25px rgb(0 0 0 / 0.2);
+  text-align: left;
 }
 
 .modal textarea {
@@ -201,30 +267,4 @@ div > span {
   display: flex;
   justify-content: flex-end;
   gap: 10px;
-}
-
-.modal button {
-  background-color: #1da1f2;
-  color: white;
-  border-radius: 20px;
-  padding: 8px 16px;
-  font-weight: 600;
-  border: none;
-  cursor: pointer;
-}
-
-.modal button[type="button"] {
-  background-color: #657786;
-}
-
-.modal button:disabled {
-  background-color: #aab8c2;
-  cursor: not-allowed;
-}
-
-/* Responsive tweaks */
-@media (max-width: 640px) {
-  .app-container {
-    padding: 12px;
-  }
 }

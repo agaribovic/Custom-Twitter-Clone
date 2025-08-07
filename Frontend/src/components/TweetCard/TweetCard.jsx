@@ -13,6 +13,7 @@ const TweetCard = ({
   onUpdate,
   getUsernameById,
   users,
+  isAdmin,
 }) => {
   const [loading, setLoading] = useState(false);
   const [liked, setLiked] = useState(tweet.likes.includes(currentUserId));
@@ -101,7 +102,9 @@ const TweetCard = ({
           isOpen={isEditing}
           onClose={() => setIsEditing(false)}
           onUpdate={handleUpdate}
-          disabledEdit={username !== tweet.user?.username}
+          disabledEdit={
+            username !== tweet.user?.username && !isAdmin
+          }
         />
 
         <div style={{ display: "flex" }}>

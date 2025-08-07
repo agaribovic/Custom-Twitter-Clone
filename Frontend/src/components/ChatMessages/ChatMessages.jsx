@@ -37,7 +37,6 @@ const ChatPage = ({ token }) => {
     fetchChatMessages(token)
       .then((data) => {
         setMessages(data);
-        scrollToBottom();
       })
       .catch((err) => console.error("Failed to fetch messages", err));
 
@@ -59,7 +58,6 @@ const ChatPage = ({ token }) => {
     try {
       await postChatMessage(token, input);
       setInput("");
-      // Socket should emit automatically via backend after POST
     } catch (err) {
       console.error("Error sending message", err);
     }
@@ -70,8 +68,6 @@ const ChatPage = ({ token }) => {
       <h2 style={styles.title}>Live Chat</h2>
       <div style={styles.chatBox}>
         {messages.map((msg, index) => {
-          console.log(index, msg.sender?.username);
-
           return (
             <div key={msg._id} style={styles.message}>
               <strong style={{ color: userColors[msg.sender?._id] }}>

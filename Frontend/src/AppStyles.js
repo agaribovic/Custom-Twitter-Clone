@@ -9,6 +9,8 @@ const styles = {
     fontSize: "14px",
     margin: "1rem",
     transition: "background-color 0.2s ease-in-out",
+    height: "50px",
+    width: "100px"
   },
   login: {
     background: "none",

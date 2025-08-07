@@ -1,7 +1,7 @@
 const styles = {
   container: {
     maxWidth: "600px",
-    margin: "50px auto",
+    width: "15%",
     padding: "20px",
     border: "1px solid #ccc",
     borderRadius: "10px",
@@ -13,7 +13,7 @@ const styles = {
     marginBottom: "20px",
   },
   chatBox: {
-    height: "400px",
+    height: "800px",
     overflowY: "auto",
     border: "1px solid #ddd",
     padding: "10px",
@@ -35,7 +35,7 @@ const styles = {
   button: {
     padding: "8px 16px",
     fontSize: "14px",
-    backgroundColor: "#007bff",
+    backgroundColor: "#rgb(29, 161, 242)",
     color: "#fff",
     border: "none",
     cursor: "pointer",
