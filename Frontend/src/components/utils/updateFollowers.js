@@ -8,7 +8,7 @@ export const updateFollowers = async ({
 }) => {
   try {
     const response = await axios.patch(
-      "http://localhost:5000/api/users/follow",
+      `${process.env.REACT_APP_API}/users/follow`,
       {
         _id: currentUserId,
         following: currentUser?.following || [],

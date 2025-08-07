@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const fetchChatMessages = async (token) => {
-  const res = await axios.get(`http://localhost:5000/api/chatMessages/get`, {
+  const res = await axios.get(`${process.env.REACT_APP_API}/chatMessages/get`, {
     headers: {
       Authorization: `Bearer ${token}`,
     },
@@ -11,7 +11,7 @@ export const fetchChatMessages = async (token) => {
 
 export const postChatMessage = async (token, content) => {
   await axios.post(
-    `http://localhost:5000/api/chatMessages/post`,
+    `${process.env.REACT_APP_API}/chatMessages/post`,
     { content },
     {
       headers: {

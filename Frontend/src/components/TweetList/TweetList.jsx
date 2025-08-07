@@ -45,8 +45,8 @@ const TweetList = ({
     const fetchData = async () => {
       try {
         const [tweetsRes, usersRes] = await Promise.all([
-          fetch("http://localhost:5000/api/tweets/get"),
-          fetch("http://localhost:5000/api/users/get"),
+          fetch(`${process.env.REACT_APP_API}/tweets/get`),
+          fetch(`${process.env.REACT_APP_API}/users/get`),
         ]);
 
         const tweetsData = await tweetsRes.json();

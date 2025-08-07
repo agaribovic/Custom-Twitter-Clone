@@ -15,7 +15,7 @@ function CreateTweet({
     if (!text.trim()) return;
 
     try {
-      const response = await fetch("http://localhost:5000/api/tweets/post", {
+      const response = await fetch(`${process.env.REACT_APP_API}/tweets/post`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

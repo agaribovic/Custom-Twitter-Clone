@@ -3,7 +3,7 @@ import axios from "axios";
 export const updateTweet = async ({ tweetId, content, token }) => {
   try {
     const res = await axios.patch(
-      `http://localhost:5000/api/tweets/${tweetId}/edit`,
+      `${process.env.REACT_APP_API}/tweets/${tweetId}/edit`,
       { content },
       { headers: { Authorization: `Bearer ${token}` } }
     );

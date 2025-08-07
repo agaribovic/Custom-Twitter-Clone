@@ -19,7 +19,7 @@ export const deleteUser = async ({
   if (result.isConfirmed) {
     try {
       await axios.delete(
-        `http://localhost:5000/api/users/${targetUserId}/delete`,
+        `${process.env.REACT_APP_API}/users/${targetUserId}/delete`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }
@@ -42,7 +42,7 @@ export const deleteUser = async ({
 export const deleteTweetsByUser = async ({ targetUserId, token }) => {
   try {
     const response = await axios.delete(
-      `http://localhost:5000/api/users/userTweets/${targetUserId}`,
+      `${process.env.REACT_APP_API}/users/userTweets/${targetUserId}`,
       {
         headers: {
           Authorization: `Bearer ${token}`,
