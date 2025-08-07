@@ -6,7 +6,6 @@ import Followers from "./components/Followers/Followers";
 import ChatMessages from "./components/ChatMessages/ChatMessages";
 import ThemeToggle from "./components/ThemeToggle/ThemeToggle";
 import Footer from "./components/Footer/Footer";
-import styles from "./AppStyles";
 import { jwtDecode } from "jwt-decode";
 
 function App() {
@@ -64,9 +63,9 @@ function App() {
           <div style={{ display: "flex", justifyContent: "space-between" }}>
             <button
               onClick={handleLogout}
-              style={styles.logout}
               onMouseOver={(e) => (e.target.style.backgroundColor = "#1A91DA")}
               onMouseOut={(e) => (e.target.style.backgroundColor = "#1DA1F2")}
+              className="btnLogout"
             >
               Logout
             </button>
@@ -129,7 +128,7 @@ function App() {
                 Already have an account?{" "}
                 <button
                   onClick={() => setShowRegister(false)}
-                  style={styles.login}
+                  className="btnLogin"
                 >
                   Log In
                 </button>
@@ -142,7 +141,7 @@ function App() {
                 Don't have an account?{" "}
                 <button
                   onClick={() => setShowRegister(true)}
-                  style={styles.login}
+                  className="btnLogin"
                 >
                   Register
                 </button>
