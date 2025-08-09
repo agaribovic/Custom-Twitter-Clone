@@ -8,6 +8,7 @@ const styles = {
     borderRadius: "10px",
     backgroundColor: "#f9f9f9",
     fontFamily: "Arial, sans-serif",
+    height: "1550px",
   },
   title: {
     textAlign: "center",

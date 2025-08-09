@@ -7,6 +7,7 @@ const styles = {
     boxShadow: "-2px 0 8px rgba(0,0,0,0.1)",
     padding: "16px",
     borderRadius: "8px 0 0 8px",
+    height: "1560px",
   },
 
   userCard: {
