@@ -83,7 +83,7 @@ export default function Followers({
           fontSize: "18px",
           textAlign: "center",
           color: hovered ? "rgb(29, 161, 242)" : "black",
-          cursor: "pointer"
+          cursor: "pointer",
         }}
         onClick={handleShuffle}
         onMouseEnter={() => setHovered(true)}
@@ -128,7 +128,8 @@ export default function Followers({
               <span
                 style={{
                   ...styles.username,
-                  color: user.username === "Admin" ? "blue" : "black",
+                  color:
+                    user.username === "Admin".toLowerCase() ? "blue" : "black",
                 }}
               >
                 {user.username}

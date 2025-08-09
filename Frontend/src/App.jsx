@@ -37,7 +37,7 @@ function App() {
   const decoded = token ? jwtDecode(token) : null;
   const currentUserId = decoded?.id;
   const currentUser = users.find((user) => user._id === currentUserId);
-  const isAdmin = currentUser?.username === "Admin";
+  const isAdmin = currentUser?.username === "Admin".toLowerCase();
 
   const handleLogin = (token) => {
     setToken(token);
