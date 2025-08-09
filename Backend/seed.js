@@ -21,15 +21,19 @@ const run = async () => {
     const users = [];
     for (let i = 0; i < NUM_USERS; i++) {
       const hashedPassword = await bcrypt.hash("password" + i, 10);
+
+      const firstName = faker.person.firstName().slice(0, 5);
+      const lastName = faker.person.lastName().slice(0, 5);
+      let username = (firstName + lastName).toLowerCase();
+
       const user = await User.create({
-        username: faker.internet.username(),
+        username,
         email: faker.internet.email(),
         password: hashedPassword,
         following: [],
       });
       users.push(user);
     }
-
     for (const user of users) {
       const toFollow = faker.helpers
         .shuffle(users.filter((u) => u._id.toString() !== user._id.toString()))

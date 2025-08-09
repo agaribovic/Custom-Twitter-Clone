@@ -72,7 +72,7 @@ const editTweet = async (req, res) => {
 
     if (
       tweet.user.toString() !== req.user.id &&
-      req.user.username !== "Admin"
+      req.user.username !== "Admin".toLowerCase()
     ) {
       return res
         .status(403)
@@ -107,7 +107,7 @@ const deleteTweet = async (req, res) => {
     // Ensure only the owner can delete
     if (
       tweet.user.toString() !== req.user.id &&
-      req.user.username !== "Admin"
+      req.user.username.toLowerCase() !== "Admin".toLowerCase()
     ) {
       return res.status(403).json({ msg: "Unauthorized" });
     }
