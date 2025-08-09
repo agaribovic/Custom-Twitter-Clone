@@ -27,7 +27,7 @@ const BackgroundMusic = () => {
   return (
     <>
       <audio ref={audioRef} src={basshunter} loop />
-      <h1 style={{ marginLeft: "125px" }} onClick={handleTogglePlay}>
+      <h1 style={{ cursor: "pointer" }} onClick={handleTogglePlay}>
         🎶 𝙲𝚄𝚂𝚃𝙾𝙼 𝚃𝚆𝙸𝚃𝚃𝙴𝚁 𝙲𝙻𝙾𝙽𝙴 𝙰𝙿𝙿.mp³ 🎉
       </h1>
     </>

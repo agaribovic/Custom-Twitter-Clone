@@ -2,6 +2,7 @@ const styles = {
   container: {
     maxWidth: "600px",
     width: "15%",
+    minWidth: "210px",
     padding: "20px",
     border: "1px solid #ccc",
     borderRadius: "10px",

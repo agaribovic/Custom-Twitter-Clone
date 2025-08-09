@@ -1,7 +1,8 @@
 const styles = {
   container: {
     maxWidth: 700,
-    width: "100%"
+    width: "100%",
+    minWidth: "610px",
   },
 
   div: {

@@ -4,8 +4,8 @@ const styles = {
     justifyContent: "center",
     alignItems: "center",
     height: "150px",
-    width: "300px",
     cursor: "pointer",
+    margin: "1rem",
   },
 
   bulb: {

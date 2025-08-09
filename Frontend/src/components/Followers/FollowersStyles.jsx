@@ -1,6 +1,7 @@
 const styles = {
   sidebar: {
     width: "15%",
+    minWidth: "210px",
     overflowY: "auto",
     backgroundColor: "#fff",
     boxShadow: "-2px 0 8px rgba(0,0,0,0.1)",

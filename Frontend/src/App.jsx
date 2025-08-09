@@ -61,7 +61,15 @@ function App() {
     <>
       {token ? (
         <>
-          <header style={{ display: "flex", justifyContent: "space-between" }}>
+          <header
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+              whiteSpace: "nowrap",
+              minWidth: "1030px",
+            }}
+          >
             <button
               onClick={handleLogout}
               onMouseOver={(e) => (e.target.style.backgroundColor = "#1A91DA")}
@@ -75,7 +83,8 @@ function App() {
             <ThemeToggle toggleTheme={toggleTheme} theme={theme} />
           </header>
 
-          <div id="container"
+          <div
+            id="container"
             style={{
               display: "flex",
               marginTop: "50px",

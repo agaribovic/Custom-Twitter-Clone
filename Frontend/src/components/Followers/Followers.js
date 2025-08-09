@@ -14,10 +14,10 @@ export default function Followers({
   token,
   setTweets,
   isAdmin,
-  currentUser
+  currentUser,
 }) {
   const [hovered, setHovered] = useState(false);
-  
+
   useEffect(() => {
     if (currentUser && currentUser.following)
       setFollowingList(currentUser.following);
@@ -83,6 +83,7 @@ export default function Followers({
           fontSize: "18px",
           textAlign: "center",
           color: hovered ? "rgb(29, 161, 242)" : "black",
+          cursor: "pointer"
         }}
         onClick={handleShuffle}
         onMouseEnter={() => setHovered(true)}
