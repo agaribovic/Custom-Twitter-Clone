@@ -11,9 +11,6 @@ npm install
 cd Frontend
 npm install --legacy-peer-deps
 
-# Connect to Database
-mongodb://localhost:27017/twitter-clone
-
 # Seed Database
 node seed.js
 

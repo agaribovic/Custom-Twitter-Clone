@@ -129,7 +129,7 @@ export default function Followers({
                 style={{
                   ...styles.username,
                   color:
-                    user.username === "Admin".toLowerCase() ? "blue" : "black",
+                    user.username.toLowerCase() === "admin" ? "blue" : "black",
                 }}
               >
                 {user.username}

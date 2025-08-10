@@ -1,13 +1,13 @@
 import { useEffect, useState, useRef } from "react";
 import { io } from "socket.io-client";
-import { fetchChatMessages, postChatMessage } from "../utils/chatMessages"; // Moved to API layer
+import { fetchChatMessages, postChatMessage } from "../utils/chatMessages";
 import styles from "./ChatMessagesStyles";
 
 const socket = io("http://localhost:5000", {
   autoConnect: false,
 });
 
-const ChatPage = ({ token }) => {
+const ChatPage = ({ token, users }) => {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
   const messagesEndRef = useRef(null);
@@ -23,6 +23,9 @@ const ChatPage = ({ token }) => {
   useEffect(() => {
     if (!token) return;
 
+    console.log('useri', users);
+    console.log('messages', messages);
+
     // Auth for socket
     socket.auth = { token };
     socket.connect();
@@ -32,6 +35,11 @@ const ChatPage = ({ token }) => {
       setMessages((prev) => [...prev, newMsg]);
       scrollToBottom();
     });
+
+    // Delete messages when a user is deleted
+    if (users?._id === msg.sender?._id) {
+      // WORK HERE
+    }
 
     // Initial fetch from REST API
     fetchChatMessages(token)
@@ -45,7 +53,7 @@ const ChatPage = ({ token }) => {
       socket.off("chatMessage");
       socket.disconnect();
     };
-  }, [token, input]);
+  }, [token, input, users]);
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });

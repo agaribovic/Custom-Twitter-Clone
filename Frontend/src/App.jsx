@@ -37,7 +37,7 @@ function App() {
   const decoded = token ? jwtDecode(token) : null;
   const currentUserId = decoded?.id;
   const currentUser = users.find((user) => user._id === currentUserId);
-  const isAdmin = currentUser?.username === "Admin".toLowerCase();
+  const isAdmin = currentUser?.username.toLowerCase() === "admin";
 
   const handleLogin = (token) => {
     setToken(token);
@@ -91,7 +91,7 @@ function App() {
               justifyContent: "space-between",
             }}
           >
-            <ChatMessages token={token} />
+            <ChatMessages token={token} users={users} />
 
             <TweetList
               token={token}

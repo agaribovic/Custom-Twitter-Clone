@@ -42,4 +42,15 @@ const postMessage = async (req, res) => {
   }
 };
 
-module.exports = { getMessages, postMessage };
+const deleteMessages = async (userId) => {
+  try {
+    const result = await Message.deleteMany({ sender: userId });
+    console.log(`Deleted ${result.deletedCount} messages for user ${userId}`);
+    return result;
+  } catch (err) {
+    console.error("Error deleting messages:", err);
+    throw err;
+  }
+};
+
+module.exports = { getMessages, postMessage, deleteMessages };

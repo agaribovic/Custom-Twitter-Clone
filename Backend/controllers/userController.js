@@ -95,11 +95,12 @@ const followUsers = async (req, res) => {
 
 const deleteUser = async (req, res) => {
   try {
-    const deletedUser = await User.findByIdAndDelete(req.params.id);
-
-    if (!deletedUser) {
+    const user = await User.findById(req.params.id);
+    if (!user) {
       return res.status(404).json({ msg: "User not found" });
     }
+
+    await user.deleteOne();
 
     res.status(200).json({ msg: "User deleted successfully" });
   } catch (err) {

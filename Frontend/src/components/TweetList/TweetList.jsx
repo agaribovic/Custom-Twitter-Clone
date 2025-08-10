@@ -15,7 +15,7 @@ const TweetList = ({
   tweets,
   setTweets,
   isAdmin,
-  currentUser
+  currentUser,
 }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [sortBy, setSortBy] = useState("newest");

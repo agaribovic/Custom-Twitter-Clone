@@ -34,13 +34,6 @@ const run = async () => {
       });
       users.push(user);
     }
-    for (const user of users) {
-      const toFollow = faker.helpers
-        .shuffle(users.filter((u) => u._id.toString() !== user._id.toString()))
-        .slice(0, faker.number.int({ min: 1, max: 3 }));
-      user.following = toFollow.map((u) => u._id);
-      await user.save();
-    }
 
     const tweets = [];
     for (const user of users) {
@@ -77,7 +70,7 @@ const run = async () => {
         content: faker.lorem.sentences(faker.number.int({ min: 1, max: 3 })),
       });
     }
-    console.log("✅ Seeded users, tweets, and messages.");
+    console.log("Seeded users, tweets, and messages.");
   } catch (err) {
     console.error(err);
   } finally {
