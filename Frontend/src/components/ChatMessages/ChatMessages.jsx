@@ -23,9 +23,6 @@ const ChatPage = ({ token, users }) => {
   useEffect(() => {
     if (!token) return;
 
-    console.log('useri', users);
-    console.log('messages', messages);
-
     // Auth for socket
     socket.auth = { token };
     socket.connect();
@@ -36,10 +33,11 @@ const ChatPage = ({ token, users }) => {
       scrollToBottom();
     });
 
-    // Delete messages when a user is deleted
-    if (users?._id === msg.sender?._id) {
-      // WORK HERE
-    }
+    // Delete user's chat messages when they are deleted
+    const currentUserIds = users.map((user) => user._id);
+    setMessages((prevMessages) =>
+      prevMessages.filter((msg) => currentUserIds.includes(msg?.sender?._id))
+    );
 
     // Initial fetch from REST API
     fetchChatMessages(token)
