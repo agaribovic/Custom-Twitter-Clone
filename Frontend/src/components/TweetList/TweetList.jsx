@@ -160,7 +160,7 @@ const TweetList = ({
         >
           Prev
         </button>
-        <span style={{ alignSelf: "center" }}>
+        <span style={{ alignSelf: "center", width: "100px" }}>
           Page {currentPage} of {totalPages}
         </span>
         <button
