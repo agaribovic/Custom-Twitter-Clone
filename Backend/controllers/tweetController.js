@@ -104,10 +104,14 @@ const deleteTweet = async (req, res) => {
       return res.status(404).json({ msg: "Tweet not found" });
     }
 
-    // Ensure only the owner can delete
+    console.log('tweet user: ', tweet.user.toString());
+    console.log('req.user.id: ', req.user.id);
+    console.log('req.user.username: ', req.user.username.toLowerCase());
+
+    // Ensure only the owner or admin can delete
     if (
       tweet.user.toString() !== req.user.id &&
-      !req.user.username.toLowerCase() === "admin"
+      req.user.username.toLowerCase() !== "admin"
     ) {
       return res.status(403).json({ msg: "Unauthorized" });
     }

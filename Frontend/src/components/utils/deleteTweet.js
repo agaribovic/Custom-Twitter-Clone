@@ -14,9 +14,12 @@ export const deleteTweet = async ({ tweetId, token, onDelete }) => {
 
   if (result.isConfirmed) {
     try {
-      await axios.delete(`${process.env.REACT_APP_API}/tweets/${tweetId}/delete`, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      await axios.delete(
+        `${process.env.REACT_APP_API}/tweets/${tweetId}/delete`,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
 
       if (onDelete) onDelete(tweetId);
 

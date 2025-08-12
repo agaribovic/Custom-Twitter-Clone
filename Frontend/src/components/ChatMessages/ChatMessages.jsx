@@ -3,7 +3,7 @@ import { io } from "socket.io-client";
 import { fetchChatMessages, postChatMessage } from "../utils/chatMessages";
 import styles from "./ChatMessagesStyles";
 
-const socket = io("http://localhost:5000", {
+const socket = io(process.env.REACT_APP_API.slice(0, -4), {
   autoConnect: false,
 });
 

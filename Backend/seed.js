@@ -1,12 +1,13 @@
 const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
 const { faker } = require("@faker-js/faker");
+require("dotenv").config();
 
 const User = require("./models/User");
 const Tweet = require("./models/Tweet");
 const Message = require("./models/Message");
 
-mongoose.connect("mongodb://localhost:27017/twitter-clone");
+mongoose.connect(process.env.MONGO_URI);
 
 const NUM_USERS = 10;
 const TWEETS_PER_USER = 5;
