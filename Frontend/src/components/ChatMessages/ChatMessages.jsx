@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from "react";
 import { io } from "socket.io-client";
-import { fetchChatMessages, postChatMessage } from "../utils/chatMessages";
+import { fetchChatMessages, postChatMessage } from "../API/chatMessages";
 import styles from "./ChatMessagesStyles";
 
 const socket = io(process.env.REACT_APP_API.slice(0, -4), {

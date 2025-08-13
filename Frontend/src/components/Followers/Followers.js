@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import { updateFollowers } from "../utils/updateFollowers";
-import { deleteUser } from "../utils/deleteUser";
-import { deleteTweetsByUser } from "../utils/deleteUser";
+import { updateFollowers } from "../API/updateFollowers";
+import { deleteUser } from "../API/deleteUser";
+import { deleteTweetsByUser } from "../API/deleteUser";
 import styles from "./FollowersStyles.jsx";
 import shuffle from "lodash/shuffle";
 import { motion, AnimatePresence } from "framer-motion";
