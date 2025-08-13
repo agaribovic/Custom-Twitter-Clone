@@ -1,8 +1,8 @@
-**Custom Twitter Clone**
+## 🐦 Custom Twitter Clone
 
 **Custom Twitter Clone** is a side project I developed using the **MERN stack — MongoDB, Express.js, React.js, and Node.js**. The project was initially inspired by Twitter’s style and core functionalities but has evolved with many additional, custom features beyond Twitter’s scope. It was also created as a guide to help a group of students learn full-stack web development.
 
-**Features**
+## ✨ Features
 
 The app combines frontend and backend functionalities with the following features:
 
